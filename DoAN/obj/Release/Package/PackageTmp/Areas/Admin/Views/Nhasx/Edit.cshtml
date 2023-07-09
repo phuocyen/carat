@@ -1,0 +1,31 @@
+﻿@model DoAN.Models.Nhasx
+
+@{
+    ViewBag.Title = "Chỉnh sửa Thương hiệu";
+}
+
+<h2>Edit</h2>
+<form action="/Admin/Nhasx/Edit/@Model.IdNhasx" method="post">
+    <input type="hidden" name="IdNhasx" value="@Model.IdNhasx" />
+    <div class="row">
+        <div class="col-md-6">
+            <label for="IdNhasx">ID</label>
+            <input type="number"
+                   class="form-control"
+                   id="IdNhasx"
+                   name="IdNhasx"
+                   placeholder="IdNhasx"
+                   value="@Model.IdNhasx" />
+        </div>
+        <div class="col-md-6">
+            <label for="Name">Tên Thương Hiệu</label>
+            <input type="text"
+                   class="form-control"
+                   id="Name"
+                   name="Name"
+                   placeholder="Name" value="@Model.Name" />
+        </div>
+    </div>
+    <button type="submit" class="btn btn-success">Save</button>
+    <a href="/Admin/Nhasx/Index" class="btn btn-danger">Cancel</a>
+</form>

@@ -1,0 +1,31 @@
+﻿@model DoAN.Models.Sanpham
+
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Areas/Admin/Views/Shared/AdminLayout1.cshtml";
+}
+
+<h2>Detail</h2>
+<table class="table">
+    <tr>
+        <th>Tên Sản Phẩm</th>
+        <td>@Model.Name</td>
+    </tr>
+    <tr>
+        <th>Giá Sản Phẩm</th>
+        <td>@Model.Gia</td>
+    </tr>
+    <tr>
+        <th>Thương Hiệu</th>
+        <td>@Model.Nhasx.IdNhasx</td>
+    </tr>
+    <tr>
+        <th>Description</th>
+        <td>@Model.Description</td>
+    </tr>
+    <tr>
+        <th>Hình Ảnh</th>
+        <td><img src="~/img/@Model.ImgUrl></td>
+    </tr>
+
+</table>

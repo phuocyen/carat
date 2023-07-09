@@ -1,0 +1,106 @@
+﻿@model List<DoAN.Identity.AppUser>
+@{
+    ViewBag.Title = "Quản lý Users";
+}
+
+<h2>User</h2>
+<a href="/Admin/User/Create">Add New User </a>
+<form class="d-flex flex-row align-items-center flex-wrap"
+      action="/Admin/User/Index">
+    <label for="search" class="mx-2 my-1">Search</label>
+    <input type="search"
+           class="form-control"
+           id="search"
+           name="search"
+           value="@ViewBag.Search"
+           placeholder="Search" />
+    <button type="submit" class="btn btn-primary mx-2">Go</button>
+</form> 
+<select id="sortDrop" name="sortDrop">
+    <option value="">Sắp xếp: </option>
+    <option value="up">Tăng dần theo tên</option>
+    <option value="down">Giảm dần theo tên </option>
+
+</select>
+<table class="table table-bordered">
+    <tr>
+        <th> User name</th>
+        <th>Email</th>
+        <th>Moblie</th>
+        <th> Date Of Birth</th>
+        <th>
+           Address
+        </th>
+        <th>City</th>
+
+    </tr>
+    @foreach(var item in Model)
+    {
+        <tr>
+            <td>@item.UserName</td>
+            <td>@item.Email</td>
+            <td>@item.PhoneNumber</td>
+            <td>@item.Birtday</td>
+            <td>@item.Adress</td>
+            <td>@item.City</td>
+            <td><a href="/Admin/User/Edit/@item.Id">Edit</a> |
+            <a href="/Admin/User/Delete/@item.Id">Delete</a>
+            </td>
+        </tr>
+    }
+</table>
+<table class="table">
+    <tr>
+        <td colspan="9">
+            @{
+                int PrevPage = ViewBag.Page - 1;
+                if (PrevPage <= 0)
+                {
+                    PrevPage = 1;
+                }
+                int NextPage = ViewBag.Page + 1;
+                if (NextPage > ViewBag.NoOfPages)
+                {
+                    {
+                        NextPage = ViewBag.NoOfPages;
+                    }
+                }
+            }
+            <ul class="pagination justify-content-center">
+                <li class="page-item">
+                    <a class="page-link" href="/Admin/User/index?SortColumn=@ViewBag.SortColumn&IconClass=@ViewBag.IconClass&page=@PrevPage">Prev</a>
+                </li>
+                @for (int i = 0; i < ViewBag.NoOfPages; i++)
+                {
+                    if (i + 1 == ViewBag.Page)
+                    {
+                        <li class="page-item active">
+                            <a class="page-link" href="/Admin/User/index?SortColumn=@ViewBag.SortColumn&IconClass=@ViewBag.IconClass&page=@(i+1)">@(i + 1)</a>
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="page-item">
+                            <a class="page-link" href="/Admin/User/index?SortColumn=@ViewBag.SortColumn&IconClass=@ViewBag.IconClass&page=@(i+1)">@(i + 1)</a>
+                        </li>
+                    }
+                }
+
+
+                <li class="page-item active">
+                    <a class="page-link" href="/Admin/User/index?SortColumn=@ViewBag.SortColumn&IconClass=@ViewBag.IconClass&page=@NextPage">Next</a>
+                </li>
+
+            </ul>
+        </td>
+    </tr>
+</table>
+
+    
+<script>
+    $('#sortDrop').change(() => {
+        const value = $('#sortDrop').val();
+    window.location.href="/Admin/User/index?sort="+value;
+
+    });
+</script>

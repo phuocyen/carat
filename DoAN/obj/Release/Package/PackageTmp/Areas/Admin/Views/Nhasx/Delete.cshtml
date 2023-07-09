@@ -1,0 +1,25 @@
+﻿@model DoAN.Models.Nhasx
+
+@{
+    ViewBag.Title = "Xóa Thương hiệu";
+}
+
+<h2>Delete</h2>
+<form action="/Admin/Nhasx/Delete/@Model.IdNhasx" method="post">
+    <input type="hidden" name="IdNhasx" value="@Model.IdNhasx" />
+    <table class="table">
+        <tr>
+            <th>ID</th>
+            <td>@Model.IdNhasx</td>
+        </tr>
+        <tr>
+            <th>Tên Thương Hiệu</th>
+            <td>@Model.Name</td>
+        </tr>
+        
+    </table>
+    <button type="submit" class="btn btn-danger">Delete</button>
+    <a href="/Admin/Nhasx/Index" class="btn btn-dark">Cancel</a>
+</form>
+
+

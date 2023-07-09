@@ -1,0 +1,32 @@
+﻿@model DoAN.Identity.AppUser
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+<form action="/Admin/User/Delete/@Model.Id" method="post">
+    <input type="hidden" name="Id" value="@Model.Id" />
+    <table class="table">
+        <tr>
+            <th>User Name</th>
+            <td>@Model.UserName</td>
+        </tr>
+        <tr>
+            <th>Email</th>
+            <td>@Model.Email</td>
+        </tr>
+        <tr>
+            <th>Address</th>
+            <td>@Model.Adress</td>
+        </tr>
+
+        <tr>
+            <th>Date of birth</th>
+            <td>@Model.Birtday</td>
+        </tr>
+
+    </table>
+    <button type="submit" class="btn btn-danger">Delete</button>
+    <a href="/Admin/User/Index" class="btn btn-dark">Cancel</a>
+</form>

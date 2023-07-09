@@ -1,0 +1,105 @@
+﻿@model DoAN.ViewModel.RegisterVM
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+@using (Html.BeginForm("Create", "User", new { area = "Admin" }, FormMethod.Post))
+{
+     <div class="row">
+        <div class="col-md-6">
+            @Html.LabelFor(temp => temp.Username)
+            @Html.TextBoxFor(temp => temp.Username, new { placehoder = 
+           "Username", @class = "form-control"})
+            @Html.ValidationMessageFor(temp => temp.Username)
+        
+        </div>
+        <div class="col-md-6">
+           
+
+
+            @Html.LabelFor(temp => temp.Email)
+            @Html.TextBoxFor(temp => temp.Email, new
+       {
+           placehoder =
+               "Email",
+           @class = "form-control"
+       })
+            @Html.ValidationMessageFor(temp => temp.Email)
+
+        </div>
+        <div class="col-md-6">
+            @Html.LabelFor(temp => temp.Password)
+            @Html.PasswordFor(temp => temp.Password, new
+               {
+                   placehoder =
+                       "Password",
+                   @class = "form-control"
+               })
+            @Html.ValidationMessageFor(temp => temp.Password)
+
+        </div>
+        <div class="col-md-6">
+            @Html.LabelFor(temp => temp.ConfirmPassord)
+            @Html.PasswordFor(temp => temp.ConfirmPassord, new
+               {
+                   placehoder =
+                       "Confirm Password",
+                   @class = "form-control"
+               })
+            @Html.ValidationMessageFor(temp => temp.ConfirmPassord)
+
+        </div>
+        <div class="col-md-6">
+            @Html.LabelFor(temp => temp.Mobile)
+            @Html.TextBoxFor(temp => temp.Mobile, new
+               {
+                   placehoder =
+                       "Mobile",
+                   @class = "form-control"
+               })
+            @Html.ValidationMessageFor(temp => temp.Mobile)
+
+        </div>
+        <div class="col-md-6">
+            @Html.LabelFor(temp => temp.DateOfBirth)
+            @Html.TextBoxFor(temp => temp.DateOfBirth, new
+               {
+                   placehoder =
+                       "Date Of Birth",
+                   @class = "form-control",
+                   type = "date"
+                   
+               })
+            @Html.ValidationMessageFor(temp => temp.DateOfBirth)
+
+        </div>
+        <div class="col-md-6">
+            @Html.LabelFor(temp => temp.Address)
+            @Html.TextBoxFor(temp => temp.Address, new
+               {
+                   placehoder =
+                       "Address",
+                   @class = "form-control"
+               })
+            @Html.ValidationMessageFor(temp => temp.Address)
+
+        </div>
+        <div class="col-md-6">
+            @Html.LabelFor(temp => temp.City)
+            @Html.TextBoxFor(temp => temp.City, new
+               {
+                   placehoder =
+                       "City",
+                   @class = "form-control"
+               })
+            @Html.ValidationMessageFor(temp => temp.City)
+
+        </div>
+    </div>
+        <button type="submit" class="btn btn-success" >Create</button> 
+
+    <a href="/Admin/User/Index" class="btn btn-danger">Cancel</a>
+
+}

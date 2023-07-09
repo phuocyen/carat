@@ -1,0 +1,24 @@
+﻿@model DoAN.Models.Nhasx
+
+@{
+    ViewBag.Title = "Thêm Thương Hiệu";
+}
+
+<h2>Create</h2>
+@using (Html.BeginForm("Create", "Nhasx", new { area = "Admin" }, FormMethod.Post))
+{
+    <div class="row">
+        <div class="col-md-6">
+            <label for="Name">Tên Thương Hiệu</label>
+            <input type="text"
+                   class="form-control"
+                   id="Name"
+                   name="Name"
+                   placeholder="Name" />
+        </div>
+    </div>
+  
+   <button type="submit" class="btn btn-success">Create</button>
+    <a href="/Admin/Nhasx/Index" class="btn btn-danger">Cancel</a>
+
+}

@@ -1,0 +1,122 @@
+﻿@model List<DoAN.Models.Sanpham>
+
+@{
+    ViewBag.Title = "Quản lý sản phẩm";
+    }
+
+<h2>Sản Phẩm</h2>
+<a href="/Admin/SanPham/Create">Thêm sản phẩm mới</a>
+<form class="d-flex flex-row align-items-center flex-wrap"  
+      action="/Admin/SanPham/Index">
+    <label for="search" class="mx-2 my-1">Search</label>
+    <input type="search"
+           class="form-control"
+           id="search"
+           name="search"
+           value="@ViewBag.Search"
+           placeholder="Search" />
+    <button type="submit" class="btn btn-primary mx-2" >Go</button>
+</form> 
+@*<table class="table">
+    <tr>
+        
+        <th>Tên Sản Phẩm</th>
+        <th>Thương Hiệu</th>
+        <th>Giá sản phẩm</th>
+    </tr>
+    @foreach(var item in Model)
+    {
+        <tr>
+            
+            <td>
+            <a href="/Admin/SanPham/Detail/@item.IdSP>@item.Name</a>
+            </td>
+            <td>@item.Nhasx.Name</td>
+            <td>@item.Gia</td>
+            <td>
+                <a href="/Admin/SanPham/Edit/@item.IdSP">Edit</a> |
+                <a href="/Admin/SanPham/Delete/@item.IdSP">Delete</a>
+            </td>
+        </tr>
+    }
+</table>*@
+<select id="sortDrop" name="sortDrop">
+    <option value="">Sắp xếp: </option>
+    <option value="up">Tăng dần theo giá</option>
+    <option value="down">Giảm dần theo giá </option>
+
+</select>
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="col-4">
+            <div class="card" style="width: 205px; height: 390px; border-radius: 15px; box-shadow: 0 0 5px 0.8px #dedede; margin: 5px 5px 10px 0px">
+                <img src="~/img/@item.ImgUrl" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">@item.Name</h5>
+                    <p class="card-text"><span style="color: #d70018"><b>@string.Format("{0:#,##0}", @item.Gia) ₫</b></span></p>
+                    @*<a href="/Sanpham/detail?SPId=@item.IdSP" class="btn btn-primary">Mua ngay</a>*@
+                    <a href="/Admin/SanPham/Edit/@item.IdSP">Edit</a> |
+                    <a href="/Admin/SanPham/Delete/@item.IdSP">Delete</a>
+                </div>
+            </div>
+        </div>
+
+
+    }
+    <table class="table">
+        <tr>
+            <td colspan="9">
+                @{
+                    int PrevPage = ViewBag.Page - 1;
+                    if (PrevPage <= 0)
+                    {
+                        PrevPage = 1;
+                    }
+                    int NextPage = ViewBag.Page + 1;
+                    if (NextPage > ViewBag.NoOfPages)
+                    {
+                        {
+                            NextPage = ViewBag.NoOfPages;
+                        }
+                    }
+                }
+                <ul class="pagination justify-content-center">
+                    <li class="page-item">
+                        <a class="page-link" href="/Admin/Sanpham/index?SortColumn=@ViewBag.SortColumn&IconClass=@ViewBag.IconClass&page=@PrevPage">Prev</a>
+                    </li>
+                    @for (int i = 0; i < ViewBag.NoOfPages; i++)
+                    {
+                        if (i + 1 == ViewBag.Page)
+                        {
+                            <li class="page-item active">
+                                <a class="page-link" href="/Admin/Sanpham/index?SortColumn=@ViewBag.SortColumn&IconClass=@ViewBag.IconClass&page=@(i+1)">@(i + 1)</a>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="page-item">
+                                <a class="page-link" href="/Admin/Sanpham/index?SortColumn=@ViewBag.SortColumn&IconClass=@ViewBag.IconClass&page=@(i+1)">@(i + 1)</a>
+                            </li>
+                        }
+                    }
+
+
+                    <li class="page-item active">
+                        <a class="page-link" href="/Admin/Sanpham/index?SortColumn=@ViewBag.SortColumn&IconClass=@ViewBag.IconClass&page=@NextPage">Next</a>
+                    </li>
+
+                </ul>
+            </td>
+        </tr>
+    </table>
+
+</div>
+<script>
+    $('#sortDrop').change(() => {
+        const value = $('#sortDrop').val();
+    window.location.href="/Admin/Sanpham/index?sort="+value;
+
+    });
+</script>
+

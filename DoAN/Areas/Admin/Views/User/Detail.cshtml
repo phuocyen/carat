@@ -1,0 +1,34 @@
+﻿@model DoAN.Identity.AppUser
+
+@{
+    ViewBag.Title = "Detail";
+}
+
+<h2>Detail</h2>
+<table class="table">
+    <tr>
+        <th> User</th>
+        <td>@Model.UserName</td>
+    </tr>
+    <tr>
+        <th>Email</th>
+        <td>@Model.Email</td>
+    </tr>
+    <tr>
+        <th>Moblie</th>
+        <td>@Model.PhoneNumber</td>
+    </tr>
+    <tr>
+        <th>Date Of Birth</th>
+        <td>@Model.Birtday</td>
+    </tr>
+    <tr>
+        <th>Address</th>
+        <td>@Model.Adress</td>
+    </tr>
+    <tr>
+        <th>City</th>
+        <td>@Model.City</td>
+    </tr>
+</table>
+

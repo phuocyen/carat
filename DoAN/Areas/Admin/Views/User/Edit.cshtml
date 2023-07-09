@@ -1,0 +1,73 @@
+﻿@model DoAN.Identity.AppUser
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+<form action="/Admin/User/Edit/@Model.Id" method="post">
+    <input type="hidden" name="IdSP" value="@Model.Id" />
+    <div class="row">
+        <div class="col-md-6">
+            <label for="UserName">Tên sản phẩm</label>
+            <input type="text"
+                   class="form-control"
+                   id="UserName"
+                   name="UserName"
+                   placeholder="UserName"
+                   value="@Model.UserName" />
+        </div>
+        <div class="col-md-6">
+            <label for="Email">Email</label>
+            <input type="text"
+                   class="form-control"
+                   id="Email"
+                   name="Email"
+                   placeholder="Email" value="@Model.Email" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <label for="Adress">Address</label>
+            <input type="text"
+                   class="form-control"
+                   id="Adress"
+                   name="Adress"
+                   placeholder="Adress" value="@Model.Adress" />
+        </div>
+        
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <label for="PhoneNumber">PhoneNumber</label>
+            <input type="text"
+                   class="form-control"
+                   id="PhoneNumber"
+                   name="PhoneNumber"
+                   placeholder="PhoneNumber" value="@Model.PhoneNumber" />
+        </div>
+        <div class="col-md-6">
+            <label for="Birtday">Birtday</label>
+            <input type="date"
+                   class="form-control"
+                   id="Birtday"
+                   name="Birtday"
+                   placeholder="Birtday" value="@Model.Birtday" />
+        </div>
+
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <label for="City">Ảnh sản phẩmCity</label>
+            <input type="text"
+                   class="form-control"
+                   id="City"
+                   name="City"
+                   placeholder="City" value="@Model.City" />
+        </div>
+
+    </div>
+    <button type="submit" class="btn btn-success">Save</button>
+    <a href="/Admin/User/Index" class="btn btn-danger">Cancel</a>
+</form>
+

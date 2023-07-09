@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="IIS Web Application Name" description="" value="pynwia-001-site1" tags="IisApp">
+    <parameterEntry kind="ProviderPath" scope="IisApp" match="^D:\\Yen\\LapTrinhWeb\\DoAN\\DoAN\\obj\\Release\\Package\\PackageTmp$" />
+    <parameterEntry kind="ProviderPath" scope="setAcl" match="^D:\\Yen\\LapTrinhWeb\\DoAN\\DoAN\\obj\\Release\\Package\\PackageTmp$" />
+  </parameter>
+  <parameter name="Add write permission to App_Data Folder" description="Add write permission to App_Data folder" value="pynwia-001-site1/App_Data" tags="Hidden">
+    <parameterEntry kind="ProviderPath" scope="setAcl" match="^D:\\Yen\\LapTrinhWeb\\DoAN\\DoAN\\obj\\Release\\Package\\PackageTmp\\App_Data$" />
+  </parameter>
+  <parameter name="DoAN.Identity.AppDbContext-Web.config Connection String" description="" value="DoAN.Identity.AppDbContext_ConnectionString" tags="">
+    <parameterEntry kind="XmlFile" scope="D:\\Yen\\LapTrinhWeb\\DoAN\\DoAN\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='DoAN.Identity.AppDbContext']/@connectionString" />
+  </parameter>
+  <parameter name="MyConnection-Web.config Connection String" description="" value="Data Source=(LocalDB)\v11.0;AttachDbFilename=|DataDirectory|\data.mdf;Integrated Security=True" tags="">
+    <parameterEntry kind="XmlFile" scope="D:\\Yen\\LapTrinhWeb\\DoAN\\DoAN\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='MyConnection']/@connectionString" />
+  </parameter>
+</parameters>

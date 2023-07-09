@@ -1,0 +1,88 @@
+﻿@model DoAN.Models.Sanpham
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/AdminLayout1.cshtml";
+}
+
+<h2>Edit</h2>
+<form action="/Admin/SanPham/Edit/@Model.IdSP" method="post">
+    <input type="hidden" name="IdSP" value="@Model.IdSP" />
+    <div class="row">
+        <div class="col-md-6">
+            <label for="Name">Tên sản phẩm</label>
+            <input type="text"
+                   class="form-control"
+                   id="Name"
+                   name="Name"
+                   placeholder="Name" 
+                   value="@Model.Name"/>
+        </div>
+        <div class="col-md-6">
+            <label for="Gia">Giá sản phẩm</label>
+            <input type="number"
+                   class="form-control"
+                   id="Gia"
+                   name="Gia"
+                   placeholder="Gia" value="@Model.Gia" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <label for="Description">Description</label>
+            <input type="text"
+                   class="form-control"
+                   id="Description"
+                   name="Description"
+                   placeholder="Description" value="@Model.Description" />
+        </div>
+        <div class="col-md-6">
+            <label for="IdNhasx">Thương hiệu</label>
+            <select class="form-control"
+                    id="IdNhasx"
+                    name="IdNhasx">
+                <option value="">Please Select ..</option>
+                @foreach (var cat in ViewBag.Nhasx)
+                {
+                    if(cat.IdNhasx == Model.IdNhasx)
+                    {  <option value="@cat.IdNhasx" selected>
+                        @cat.Name
+                    </option>
+                    }
+                    else
+                    {
+                        <option value="@cat.IdNhasx" >
+                        @cat.Name
+                    </option>
+                    }
+                 }
+
+            </select>
+             </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <label for="ImgUrl">Ảnh sản phẩm</label>
+            <input type="text"
+                   class="form-control"
+                   id="ImgUrl"
+                   name="ImgUrl"
+                   placeholder="ImgUrl" value="@Model.ImgUrl" />
+        </div>
+
+    </div>
+    <div class="row">
+        <div class="mx-3 form-check">
+            <input type="checkbox"
+                   class="form-check-input"
+                   id="Active"
+                   name="Active"
+                   value="true" 
+                   checked=""/>
+            <label class="form-check-label" for="Active">Active</label>
+        </div>
+
+    </div>
+    <button type="submit" class="btn btn-success">Save</button>
+    <a href="/Admin/Sanpham/Index" class="btn btn-danger">Cancel</a>
+</form>

@@ -1,0 +1,54 @@
+﻿@model List<DoAN.Identity.GioHang>
+
+@{
+    ViewBag.Title = "Giỏ Hàng";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+<h2>Giỏ Hàng</h2>
+@if (Model.Count > 0)
+{
+  decimal total = 0;
+  int stt = 1;
+
+    <table class="table">
+        <tr>
+            <th>STT</th>
+            <th>Sản phẩm</th>
+            <th>Giá</th>
+            <th>Số lượng</th>
+            <th>Thành tiền</th>
+            <th></th>
+        </tr>
+        @foreach (var cartitem in Model)
+    {
+        var thanhtien = cartitem.Quantity * cartitem.SanPham.Gia;
+        total += thanhtien;
+
+            <tr>
+                <td>@(stt++)</td>
+                <td>@cartitem.SanPham.Name</td>
+                <td>@(cartitem.SanPham.Gia.ToString("n0"))</td>
+                <td>@*<input asp-for="@cartitem.Quantity" id="@($"Quantity-{cartitem.SanPham.IdSP}")" />*@</td>
+                <td>@(thanhtien.ToString("n0"))</td>
+                <td>
+                    <button class="btn btn-success updatecartitem"
+                            data-productid="@cartitem.SanPham.IdSP">
+                        Cập nhật
+                    </button>
+                    <a asp-route="removecart" asp-route-productid="@cartitem.SanPham.IdSP"
+                       class="btn btn-danger">Xóa</a>
+                </td>
+            </tr>
+    }
+        <tr>
+            <td colspan="4" class="text-right">Tổng tiền</td>
+            <td>@(total.ToString("n0"))</td>
+            <td></td>
+        </tr>
+    </table>
+}
+else {
+    <p class="alert alert-danger">Giỏ hàng trống</p>
+}
+

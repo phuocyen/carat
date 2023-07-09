@@ -1,0 +1,35 @@
+﻿@model DoAN.Models.Sanpham
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/AdminLayout1.cshtml";
+}
+
+<h2>Delete</h2>
+<form action="/Admin/SanPham/Delete/@Model.IdSP" method="post">
+    <input type="hidden" name="IdSP" value="@Model.IdSP" />
+    <table class="table">
+        <tr>
+            <th>Tên Sản Phẩm</th>
+            <td>@Model.Name</td>
+        </tr>
+        <tr>
+            <th>Giá Sản Phẩm</th>
+            <td>@Model.Gia</td>
+        </tr>
+        <tr>
+            <th>Thương Hiệu</th>
+            <td>@Model.Nhasx.Name</td>
+        </tr>
+       
+        <tr>
+            <th>Hình Ảnh</th>
+            <td><img src="~/img/@Model.ImgUrl" class="card-img-top" alt="...">
+                                                                                </td>
+        </tr>
+
+    </table>
+    <button type="submit" class="btn btn-danger" >Delete</button>
+    <a href="/Admin/SanPham/Index" class="btn btn-dark">Cancel</a> 
+</form>
+

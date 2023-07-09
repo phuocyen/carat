@@ -1,0 +1,60 @@
+﻿@model DoAN.Models.Sanpham
+
+@{
+    ViewBag.Title = @Model.Name;
+    Layout = "~/Views/Shared/_LayoutPage2.cshtml";
+}
+
+
+@*@using(Html.BeginForm("Detail","SanPham",FormMethod.Post))
+{*@
+<div class="row" style="margin-left: 20px">
+    <div class="col-2">
+       
+    </div>
+    <div class="col-5">
+        <h4>@Model.Name</h4>
+        <br /><br />
+        <div style="width : 400px ; height: 500px ">
+            <img style="width : 400px ; height: 420px " src="~/img/@Model.ImgUrl" />
+        </div>
+    </div>
+    <div class="col-5">
+        
+        <br />
+        
+
+        <h4>Giá : <span style="color: #d70018">@string.Format("{0:#,##0}", @Model.Gia) ₫</span></h4><br />
+        <h6>Hãng: @Model.Nhasx.Name </h6>
+        <h6> Mô tả : @Model.Description</h6>
+
+        <br />
+        <br />
+        <button type="button" class="btn" style="height: 80px; width: 380px; background: linear-gradient(#f52f32,#e11b1e); color: white; border-radius: 15px; font-size: 25px; "><b>MUA NGAY</b></button>
+        <br />
+        <br />
+        @*@Html.ActionLink("ThemVaoGioHang", "ThemVaoGio", new {Controller="GioHang", idSanPHam=Model.IdSP })*@
+        @*<a href="/GioHang/ThemVaoGioHang?SPId=@ViewBag.id" class="btn btn-secondary">
+
+            <b>Thêm vào giỏ hàng</b>
+
+        </a>*@
+        <a class="btn btn-success btn-sm" href="@Url.Action("ThemVaoGioHang", "GioHang", new { IdSP = Url.RequestContext.RouteData.Values["id"] })"> <span class="glyphicon glyphicon-shopping-cart"></span>  Thêm vào giỏ </a>
+        
+        </div>
+    <div class="row">
+        <div class="col-3"></div>
+        
+        <div class="col-9">
+            <p><b>ĐẶC ĐIỂM NỔI BẬT</b><br />
+                Trải nghiệm thị giác ấn tượng - Màn hình Dynamic Island, sắc nét với công nghệ Super Retina XDR, mượt mà 120 Hz<br />
+                Tuyệt đỉnh thiết kế, tỉ mỉ từng đường nét - Nâng cấp toàn diện với kiểu dáng mới, nhiều lựa chọn màu sắc trẻ trung <br / >
+                Hiệu năng hàng đầu thế giới - Apple A16 Bionic xử lí nhanh, ổn định mọi tác vụ<br />
+                Camera chuẩn nhiếp ảnh chuyên nghiệp - Camera sau 48MP trang bị nhiều công nghệ chụp đa dạng</p><br />
+        </div>
+       
+    </div>
+</div>
+@*}*@
+
+

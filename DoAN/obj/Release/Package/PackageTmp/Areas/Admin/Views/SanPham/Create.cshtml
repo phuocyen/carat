@@ -1,0 +1,82 @@
+﻿
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Areas/Admin/Views/Shared/AdminLayout1.cshtml";
+}
+
+<h2>Create</h2>
+@using (Html.BeginForm("Create", "SanPham", new {area = "Admin"}, FormMethod.Post))
+{
+    <div class="row">
+        <div class="col-md-6">
+            <label for="Name">Tên sản phẩm</label>
+            <input type="text"
+                   class="form-control"
+                   id="Name"
+                   name="Name"
+                   placeholder="Name"/>
+        </div>
+        <div class="col-md-6">
+            <label for="Gia">Giá sản phẩm</label>
+            <input type="number"
+                   class="form-control"
+                   id="Gia"
+                   name="Gia"
+                   placeholder="Gia" />
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-md-6">
+            <label for="Description">Description</label>
+            <input type="text"
+                   class="form-control"
+                   id="Description"
+                   name="Description"
+                   placeholder="Description" />
+        </div>
+        <div class="col-md-6">
+            <label for="IdNhasx">Thương hiệu</label>
+            <select 
+                   class="form-control"
+                   id="IdNhasx"
+                   name="IdNhasx">
+                <option value="">Please Select ..</option>
+                @foreach (var cat in ViewBag.Nhasx)
+                {
+                    <option value="@cat.IdNhasx">
+                        @cat.Name
+                    </option>
+                }
+            </select>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <label for="ImgUrl">Ảnh sản phẩm</label>
+            <input type="text"
+                   class="form-control"
+                   id="ImgUrl"
+                   name="ImgUrl"
+                   placeholder="ImgUrl" />
+        </div>
+        
+    </div>
+    <div class="row">
+        <div class="mx-3 form-check">
+            <input type="checkbox"
+                   class="form-check-input"
+                   id="Active"
+                   name="Active"
+                   value="true" />
+            <label class="form-check-label" for="Active">Active</label>
+        </div>
+
+    </div>
+    <button type="submit" class="btn btn-success" >Create</button> 
+    <a href="/Admin/Sanpham/Index" class="btn btn-danger">Cancel</a> 
+
+}
+@*<form action="/Admin/SanPham/Create" method="post"  >*@
+@*</form>*@
